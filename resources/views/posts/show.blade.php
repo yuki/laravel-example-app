@@ -1,10 +1,9 @@
-<h1>{{$post->titulo}}</h1>
+@extends('layouts.app')
 
-<div>
-    Creado el: {{$post->created_at}}
+@section('content')
+<div class="container">
+  <h1>{{$post->titulo}}</h1>
+  <p>Creado el {{$post->created_at}}</p>
+  <p>{{$post->texto}}</p>
 </div>
-
-<div>
-    {{$post->texto}}
-</div>
-
+@endsection
