@@ -50,7 +50,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit',['post'=>$post]);
     }
 
     /**
@@ -58,7 +58,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->titulo = $request->titulo;
+        $post->texto = $request->texto;
+        $post->publicado = $request->has('publicado');
+        $post->save();
+        return view('posts.show',['post'=>$post]);
     }
 
     /**
