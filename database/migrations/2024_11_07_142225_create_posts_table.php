@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titulo',length:255);
             $table->text('texto');
             $table->boolean('publicado');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
