@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comentario;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class ComentarioController extends Controller
@@ -28,7 +29,11 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comentario = new Comentario();
+        $comentario->texto=$request->texto;
+        $post = Post::find($request->post);
+        $post->comentarios()->save($comentario);
+        return redirect()->route('posts.show',['post'=>$post]);
     }
 
     /**

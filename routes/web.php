@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ComentarioController;
 
 Route::permanentRedirect('/', '/posts');
 
@@ -9,6 +10,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resources([
       'posts' => PostController::class,
     ]);
+    Route::post('/comentarios', [ComentarioController::class, 'store'])->name('comentarios.store');
 });
 
 Route::controller(PostController::class)->group(function () {
