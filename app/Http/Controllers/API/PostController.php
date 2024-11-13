@@ -24,7 +24,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        if ($request->has('titulo') && $request->has('texto') && $request->has('publicado')){
+            $post->titulo = $request->titulo;
+            $post->texto = $request->texto;
+            $post->publicado = $request->publicado;
+            $post->save();
+            return response()->json($post)->setStatusCode(Response::HTTP_OK);
+        } else {
+            return response()->json("Error. Falta algún parámetro")->setStatusCode(Response::HTTP_BAD_REQUEST );
+        }
     }
 
     /**
